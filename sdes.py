@@ -1,3 +1,29 @@
+def encript(key, text):
+    if len(key) <= 10:
+        try:
+            key = int(key, 2)
+        except ValueError:
+            return 'Forneça uma chave valida(Valor binario de 10 bits)'
+    else:
+        return 'Forneça uma chave valida(Valor binario de 10 bits)'
+    x = sdes()
+    x.set_key(key)
+    return x.cript(text)
+
+
+def decript(key, text):
+    if len(key) <= 10:
+        try:
+            key = int(key, 2)
+        except ValueError:
+            return 'Forneça uma chave valida(Valor binario de 10 bits)'
+    else:
+        return 'Forneça uma chave valida(Valor binario de 10 bits)'
+    x = sdes()
+    x.set_key(key)
+    return x.decript(text)
+
+
 class sdes:
 
     def __init__(self):
@@ -16,14 +42,14 @@ class sdes:
                    [3, 0, 1, 0],
                    [2, 1, 0, 3]]
 
-        self.chave = '0110001010'
+        self.key = '0110001010'
 
     def set_key(self, chave):
         chave2 = bin(chave)[2:]
         if len(chave2) > 10:
-            print('Tamanho de chave inválido, por favor forneça um numero entre 0 e 1023')
+            print('Tamanho de chave inválido, por favor forneça uma chave de 10 bits')
             return
-        self.chave = bin(chave)[2:].rjust(10, '0')
+        self.key = bin(chave)[2:].rjust(10, '0')
 
     def Fip(self, inpt):
         output = []
@@ -130,7 +156,7 @@ class sdes:
     def encript_letra(self, text):
         text = self.bitfy(text)
 
-        k1, k2 = self.gen_key(self.chave)
+        k1, k2 = self.gen_key(self.key)
         v1, v2 = self.Fip(text)
         v1, v2 = self.Fk(v1, v2, k1)
         v1, v2 = self.Fk(v2, v1, k2)
@@ -142,7 +168,7 @@ class sdes:
     def decript_letra(self, text):
         text = self.bitfy(text)
 
-        k1, k2 = self.gen_key(self.chave)
+        k1, k2 = self.gen_key(self.key)
         v1, v2 = self.Fip(text)
         v1, v2 = self.Fk(v1, v2, k2)
         v1, v2 = self.Fk(v2, v1, k1)
@@ -152,20 +178,20 @@ class sdes:
         return output
 
     def bitfy(self, text):
-        text = bin(ord(text))[2:].rjust(8,'0')
+        text = bin(ord(text))[2:].rjust(8, '0')
         text = [l for l in text]
         return text
 
     def desbitfy(self, bits):
         return chr(int(''.join(bits), 2))
 
-    def encript_text(self, text):
+    def cript(self, text):
         new_text = ''
         for letra in text:
             new_text += self.encript_letra(letra)
         return new_text
 
-    def decript_text(self, text):
+    def decript(self, text):
         new_text = ''
         for letra in text:
             new_text += self.decript_letra(letra)
