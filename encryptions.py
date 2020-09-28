@@ -171,10 +171,10 @@ class Ui_Dialog(QDialog):
 
     def radio_button(self):
         if self.Criptografar_rButton.isChecked():
-            self.Mensagem_label.setText("Mensagem Criptografada: ")
+            # self.Mensagem_label.setText("Mensagem Criptografada: ")
             self.encript = 1
         elif self.Descriptografar_rButton.isChecked():
-            self.Mensagem_label.setText("Mensagem Descriptografada: ")
+            # self.Mensagem_label.setText("Mensagem Descriptografada: ")
             self.encript = 0
 
 
