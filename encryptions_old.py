@@ -113,9 +113,9 @@ class Ui_Dialog(QDialog):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Algoritmos de criptografias simétricos"))
+        Dialog.setWindowTitle(_translate("Dialog", "Criptografar"))
 
-        self.Mensagem_label.setText(_translate("Dialog", "Mensagem:"))
+        self.Mensagem_label.setText(_translate("Dialog", "Mesagem:"))
         self.Chave_label.setText(_translate("Dialog", "Chave:"))
         self.Criptografar_rButton.setText(_translate("Dialog", "Criptografar"))
         self.Descriptografar_rButton.setText(_translate("Dialog", "Descriptografar"))
@@ -171,10 +171,10 @@ class Ui_Dialog(QDialog):
 
     def radio_button(self):
         if self.Criptografar_rButton.isChecked():
-            self.Mensagem_label.setText("Mensagem Criptografada: ")
+            self.Mensagem_label.setText("Criptografar")
             self.encript = 1
         elif self.Descriptografar_rButton.isChecked():
-            self.Mensagem_label.setText("Mensagem Descriptografada: ")
+            self.Mensagem_label.setText("Descriptografar")
             self.encript = 0
 
 

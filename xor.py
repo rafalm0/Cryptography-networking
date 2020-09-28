@@ -14,10 +14,10 @@ def encript(key, text):
 
     try:  # input em letra
         key = ord(key)
-        return ''.join([chr(ord(letra) ^ key) for letra in text])
+        return ''.join([chr(ord(letra) ^ key) for letra in text]).replace('\r', '\\r')
     except TypeError:
         return 'Forneça uma chave valida(Valor inteiro ou caractere)'
 
 
 def decript(key, text):
-    return encript(key, text)
+    return encript(key, text.replace('\\r', '\r'))
